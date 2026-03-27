@@ -79,7 +79,7 @@ Most writing assistants are cloud-first. Stellaris is local-first by design:
 
 - **Node.js** 18+ (recommended: current LTS)
 - **npm** 9+
-- **Chrome** 116+ (Manifest V3 minimum in this project)
+- **Chrome** with Manifest V3 support (manifest currently declares minimum Chrome 116)
 - **Ollama** installed and running locally
 - At least one Ollama model pulled locally, for example:
   - `ollama pull llama3.1`
