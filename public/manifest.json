@@ -1,4 +1,4 @@
-﻿{
+{
   "manifest_version": 3,
   "name": "Stellaris Local Assist",
   "version": "0.1.0",
@@ -7,6 +7,19 @@
   "permissions": ["storage", "scripting", "activeTab"],
   "host_permissions": ["http://localhost/*", "http://127.0.0.1/*"],
   "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["chatgpt.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["chatgpt-interceptor.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
   "background": {
     "service_worker": "background.js",
     "type": "module"

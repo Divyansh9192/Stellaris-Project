@@ -1,5 +1,5 @@
-﻿import { DEFAULT_SETTINGS } from "./defaults";
-import { GRANTED_SITE_LABELS_KEY, SETTINGS_KEY } from "./constants";
+import { DEFAULT_SETTINGS } from "./defaults";
+import { GRANTED_SITE_LABELS_KEY, SETTINGS_KEY, LOCAL_MODE_KEY } from "./constants";
 import { normalizeEndpoint } from "./loopback";
 import type { ExtensionSettings, PromptAction } from "./types";
 
@@ -69,4 +69,13 @@ export const saveGrantedSiteDisplayState = async (state: GrantedSiteDisplayState
   await chrome.storage.local.set({
     [GRANTED_SITE_LABELS_KEY]: state,
   });
+};
+
+export const getLocalModeEnabled = async (): Promise<boolean> => {
+  const stored = await chrome.storage.local.get(LOCAL_MODE_KEY);
+  return Boolean(stored[LOCAL_MODE_KEY]);
+};
+
+export const saveLocalModeEnabled = async (enabled: boolean): Promise<void> => {
+  await chrome.storage.local.set({ [LOCAL_MODE_KEY]: enabled });
 };

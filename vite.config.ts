@@ -6,11 +6,27 @@ export default defineConfig({
   publicDir: "public",
   plugins: [
     {
-      name: "bundle-content-script",
+      name: "bundle-content-scripts",
       async closeBundle() {
         await esbuildBuild({
           entryPoints: [resolve(__dirname, "src/content/index.ts")],
           outfile: resolve(__dirname, "dist/content.js"),
+          bundle: true,
+          format: "iife",
+          target: "chrome116",
+          sourcemap: true,
+        });
+        await esbuildBuild({
+          entryPoints: [resolve(__dirname, "src/chatgpt/index.ts")],
+          outfile: resolve(__dirname, "dist/chatgpt.js"),
+          bundle: true,
+          format: "iife",
+          target: "chrome116",
+          sourcemap: true,
+        });
+        await esbuildBuild({
+          entryPoints: [resolve(__dirname, "src/chatgpt/interceptor-main.ts")],
+          outfile: resolve(__dirname, "dist/chatgpt-interceptor.js"),
           bundle: true,
           format: "iife",
           target: "chrome116",
