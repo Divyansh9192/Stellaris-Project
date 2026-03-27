@@ -213,4 +213,6 @@ Marketing and store metadata are under:
 
 ## License
 
-No license file is currently present in this repository. Add one before public distribution if needed.
+No license file is currently present in this repository.
+
+For public distribution (including Chrome Web Store release), add a LICENSE file before publishing. A permissive license such as MIT or Apache-2.0 is a common choice if you intend others to use and modify the project. Without an explicit license, default copyright restrictions apply.
